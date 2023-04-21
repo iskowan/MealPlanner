@@ -46,17 +46,22 @@ class FoodTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return meals[section].food.count
         
-        // Time Stamp: 2:48
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "foodCell", for: indexPath)
+        
+        let meal = meals[indexPath.section]
+        let food = meal.food[indexPath.row]
+        cell.textLabel?.text = food.name
+        cell.detailTextLabel?.text = food.description
         
         // Configure the cell...
         
         return cell
     }
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ""
+        return meals[section].name
     }
 }
